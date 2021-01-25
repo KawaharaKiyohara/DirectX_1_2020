@@ -36,6 +36,24 @@ public:
 		m_isDirty = true;
 	}
 	/// <summary>
+	/// 注視点を動かす。
+	/// </summary>
+	/// <param name="move">移動量</param>
+	void MoveTarget(const Vector3& move)
+	{
+		m_target += move;
+		m_isDirty = true;
+	}
+	/// <summary>
+	/// 視点を動かす。
+	/// </summary>
+	/// <param name="move"></param>
+	void MovePosition(const Vector3& move)
+	{
+		m_position += move;
+		m_isDirty = true;
+	}
+	/// <summary>
 	/// カメラの前方方向に移動。
 	/// </summary>
 	/// <param name="moveForward"></param>
