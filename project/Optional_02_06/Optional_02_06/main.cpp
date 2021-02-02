@@ -57,20 +57,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		v.Normalize();
 
 		//step-1 カメラの横ベクトルを求める。
-		Vector3 cameraYoko;
-		//カメラの前方向と上方向の外積を求める。
-		cameraYoko.Cross( g_vec3Up, v );
-		//正規化する。
-		cameraYoko.Normalize();
+		
+
 
 		//step-2 カメラの横ベクトルを使って、ティーポットの座標を動かす。
-		if (g_pad[0]->IsPress(enButtonRight)) {
-			//右ボタンが押されたときは右に移動する。
-			teapotPos += cameraYoko * 2.0f;
-		}else if (g_pad[0]->IsPress(enButtonLeft)) {
-			//左ボタンが押されたときは左に移動する。
-			teapotPos -= cameraYoko * 2.0f;
-		}
+
+
+
 
 		//カメラの前方向を使って、ティーポットの座標を動かす。
 		if (g_pad[0]->IsPress(enButtonUp)) {
