@@ -59,15 +59,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//コントローラーの入力でY軸周りに回転するカメラを作成する。
 		Quaternion qRotY;
 		//g_pad[0]->GetRStickXF()はコントローラーの右スティックの入力量が取得できる関数。
-		qRotY.SetRotationY(g_pad[0]->GetRStickXF() * 0.005f);
+		qRotY.SetRotationY(g_pad[0]->GetRStickXF() * 0.02f);
 		//回転クォータニオンでtoCameraPosを回す。
 		qRotY.Apply(toCameraPos);
 
 		//【ハンズオン】コントローラーの入力でX軸周りに回転するカメラを作成する。
-		
-
-
-
+		Vector3 rotAxis;
+		rotAxis.Cross(g_vec3AxisY, toCameraPos);
+		rotAxis.Normalize();
+		Quaternion qRotX;
+		qRotX.SetRotation(rotAxis, g_pad[0]->GetRStickYF() * 0.02f);
+		qRotX.Apply(toCameraPos);
 
 		//新しい注視点をティーポットの少し上に設定する。
 		cameraTarget = teapotPos;
